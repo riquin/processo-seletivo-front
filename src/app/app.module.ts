@@ -26,11 +26,17 @@ import { AppRoutingModule } from './app.router';
 import { SharedModule } from "./shared/shared.module";
 import { MenuComponent } from './_layout/menu/menu.component';
 import { CommonModule } from '@angular/common';
+//import { InstituicaoListComponent } from './instituicao-list/instituicao-list.component';
+//import { InstituicaoFormComponent } from './instituicao-form/instituicao-form.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenuComponent
+    MenuComponent,
+  //  InstituicaoListComponent,
+  //  InstituicaoFormComponent,
+  
 
   ],
   imports: [
