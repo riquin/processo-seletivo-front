@@ -20,10 +20,17 @@
             <!-- AQUI -->
             <tr>
               <th>#ID</th>
-              <th>Código</th>
               <th>Nome</th>
+              <th>Código</th>
+              <th>Bairro</th>
+              <th>Logradouro</th>
+              <th>Numero</th>
+              <th>Caixa Postal</th>
+              <th>País</th>
               <th>Numero Fiscal</th>
-              <th class="no-sort text-center">Ações</th>
+              <th>Provincia</th>
+              <th>Municipio</th>
+              <th class="no-sort text-center">Ações</th> 
             </tr>
 
           </thead>
@@ -34,7 +41,14 @@
               <td>{{instituicao.id}}</td>
               <td>{{instituicao.codigo}}</td>
               <td><a [routerLink]="['/instituicao/visualizar', instituicao.id]">{{instituicao.nome}}</a></td>
+              <td>{{instituicao.bairro}}</td>
+              <td>{{instituicao.logradouro}}</td>
+              <td>{{instituicao.numero}}</td>
+              <td>{{instituicao.caixaPostal}}</td>
+              <td>{{instituicao.pais}}</td>
               <td>{{instituicao.numeroFiscal}}</td>
+              <td>{{instituicao.provincia}}</td>
+              <td>{{instituicao.municipio}}</td>
               <td class="text-center">
                 <a class="btn btn-default" rel="tooltip" data-placement="top" [routerLink]="['/instituicao/alterar', mantenedora.id]" title="" data-original-title="Alterar">
                   <i class="fa fa-pencil"></i>

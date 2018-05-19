@@ -2,7 +2,7 @@
   <div class="col-md-12">
 
     <!-- AQUI -->
-    <a class="btn btn-primary" [routerLink]="['/mantenedora/novo']">
+    <a class="btn btn-primary" [routerLink]="['/unidade/novo']">
       <i class="fa fa-plus"></i>
       <span>Novo</span>
     </a>
@@ -37,23 +37,23 @@
           <tbody>
 
             <!-- AQUI -->
-            <tr *ngFor="let mantenedora of mantenedoras; let i = index">
-              <td>{{mantenedora.id}}</td>
-              <td>{{mantenedora.codigo}}</td>
-              <td><a [routerLink]="['/mantenedora/visualizar', mantenedora.id]">{{mantenedora.nome}}</a></td>
-              <td>{{mantenedora.bairro}}</td>
-              <td>{{mantenedora.logradouro}}</td>
-              <td>{{mantenedora.numero}}</td>
-              <td>{{mantenedora.caixaPostal}}</td>
-              <td>{{mantenedora.pais}}</td>
-              <td>{{mantenedora.numeroFiscal}}</td>
-              <td>{{mantenedora.provincia}}</td>
-              <td>{{mantenedora.municipio}}</td>
+            <tr *ngFor="let unidade of unidades; let i = index">
+              <td>{{unidade.id}}</td>
+              <td>{{unidade.codigo}}</td>
+              <td><a [routerLink]="['/unidade/visualizar', unidade.id]">{{unidade.nome}}</a></td>
+              <td>{{unidade.bairro}}</td>
+              <td>{{unidade.logradouro}}</td>
+              <td>{{unidade.numero}}</td>
+              <td>{{unidade.caixaPostal}}</td>
+              <td>{{unidade.pais}}</td>
+              <td>{{unidade.numeroFiscal}}</td>
+              <td>{{unidade.provincia}}</td>
+              <td>{{unidade.municipio}}</td>
               <td class="text-center">
-                <a class="btn btn-default" rel="tooltip" data-placement="top" [routerLink]="['/mantenedora/alterar', mantenedora.id]" title="" data-original-title="Alterar">
+                <a class="btn btn-default" rel="tooltip" data-placement="top" [routerLink]="['/unidade/alterar', mantenedora.id]" title="" data-original-title="Alterar">
                   <i class="fa fa-pencil"></i>
                 </a>
-                <a class="btn btn-default modal-confirm" (click)="openModal(template, mantenedora, i)" data-url="#">
+                <a class="btn btn-default modal-confirm" (click)="openModal(template, unidade, i)" data-url="#">
                   <i class="fa fa-trash"></i>
                 </a>
               </td>
@@ -64,8 +64,8 @@
 
         <ng-template #template>
           <div class="modal-body text-center">
-            <p>Deseja realmente excluir a mantenedora {{selectedMantenedora.nome}}</p>
-            <button type="button" class="btn btn-default" (click)="deleteMantenedora()">Yes</button>
+            <p>Deseja realmente excluir a unidade {{selectedUnidade.nome}}</p>
+            <button type="button" class="btn btn-default" (click)="deleteUnidade()">Yes</button>
             <button type="button" class="btn btn-primary" (click)="hideModal()">No</button>
           </div>
         </ng-template>

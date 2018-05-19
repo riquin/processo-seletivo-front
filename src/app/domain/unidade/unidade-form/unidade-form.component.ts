@@ -3,65 +3,65 @@ import { FormBuilder, FormGroup, Validators, FormsModule } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import { FileUploader } from 'ng2-file-upload';
 
-import { InstituicaoService } from "../instituicao.service";
-import { Instituicao } from "../instituicao";
+import { UnidadeService } from "../unidade.service";
+import { Unidade } from "../unidade";
 import { Observable } from 'rxjs/Observable';
 import { CURRENCYMASKDIRECTIVE_VALUE_ACCESSOR } from 'ng2-currency-mask';
 import { FormControl } from '@angular/forms/src/model';
 
 @Component({
-  selector: 'app-instituicao-form',
-  templateUrl: './instituicao-form.component.html',
-  styleUrls: ['./instituicao-form.component.css']
+  selector: 'app-unidade-form',
+  templateUrl: './unidade-form.component.html',
+  styleUrls: ['./unidade-form.component.css']
 })
-export class InstituicaoFormComponent implements OnInit {
+export class UnidadeFormComponent implements OnInit {
 
-  instituicao: Instituicao
-  instituicaoForm: FormGroup
+  unidade: Unidade;
+  unidadeForm: FormGroup;
 
   constructor(
+    
     private route: ActivatedRoute,
     private router: Router,
     private builder: FormBuilder,
     private imagem: FormBuilder,
-    public instituicaoService: InstituicaoService,
+    public unidadeService: UnidadeService,
   ) { }
 
   ngOnInit() {
-    this.instituicao = new Instituicao();
+    this.unidade = new Unidade();
 
     /* Obter o `ID` passado por parâmetro na URL */
-    this.instituicao.id = this.route.snapshot.params['id'];
+    this.unidade.id = this.route.snapshot.params['id'];
 
     /* Define o titulo da página */
-    // this.layout.title = (this.instituicao.id == null) ? 'Nova Instituicao' : 'Alterar Instituicao';
+    // this.layout.title = (this.unidade.id == null) ? 'Nova Unidade' : 'Alterar Unidade';
 
     /* Reactive Forms */
-    this.instituicaoForm = this.builder.group({
+    this.unidadeForm = this.builder.group({
       id:[],
       codigo: [null, [Validators.required, Validators.maxLength(3)]],
       nome: [null, [Validators.required, Validators.maxLength(80)]],
       numeroFiscal: [null, [Validators.required, Validators.maxLength(20)]],
       endereco: [null, [Validators.required, Validators.maxLength(50)]]
     }, {});
-
     // Se existir `ID` realiza busca para trazer os dados
-    if (this.instituicao.id != null) {
-      this.instituicaoService.findOne(this.instituicao.id)
-        .subscribe(instituicao => {
-          this.instituicaoForm.patchValue(instituicao);
+    if (this.unidade.id != null) {
+      this.unidadeService.findOne(this.unidade.id)
+        .subscribe(unidade => {
+          this.unidadeForm.patchValue(unidade);
         });
     }
-  }
 
-  /* Método para salva instituicao */
-  salvar(instituicao: Instituicao) {
-    this.instituicaoService.save(instituicao)
-      .subscribe(response => {
-        /* Redireciona para lista */
-        this.router.navigate(['/instituicao']);
-      })
   }
+    /* Método para salva unidade */
+    salvar(unidade: Unidade) {
+      this.unidadeService.save(unidade)
+        .subscribe(response => {
+          /* Redireciona para lista */
+          this.router.navigate(['/unidade']);
+        })
+    }
+  
 
 }
-

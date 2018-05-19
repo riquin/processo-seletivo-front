@@ -2,37 +2,39 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { InstituicaoService } from "../instituicao.service";
-import { Instituicao } from "../instituicao";
+import { UnidadeService } from "../unidade.service";
+import { Unidade } from "../unidade";
+
 
 @Component({
-  selector: 'app-instituicao-details',
-  templateUrl: './instituicao-details.component.html',
-  styleUrls: ['./instituicao-details.component.css']
+  selector: 'app-unidade-details',
+  templateUrl: './unidade-details.component.html',
+  styleUrls: ['./unidade-details.component.css']
 })
-export class InstituicaoDetailsComponent implements OnInit {
+export class UnidadeDetailsComponent implements OnInit {
 
-  instituicao: Instituicao;
-  instituicaoForm: FormGroup;
+  unidade: Unidade;
+  unidadeForm: FormGroup;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private builder: FormBuilder,
-    public instituicaoService: InstituicaoService
+    public unidadeService: UnidadeService
+
   ) { }
 
   ngOnInit() {
-    this.instituicao = new Instituicao();
+    this.unidade = new Unidade();
 
     /* Obter o `ID` passado por parâmetro na URL */
-    this.instituicao.id = this.route.snapshot.params['id'];
+    this.unidade.id = this.route.snapshot.params['id'];
 
     /* Define o titulo da página */
-    // this.layout.title = 'Visualizar Instituicao';
+    // this.layout.title = 'Visualizar Unidade';
 
     /* Reactive Forms */
-    this.instituicaoForm = this.builder.group({
+    this.unidadeForm = this.builder.group({
       id: [],
       codigo: this.builder.control('', [Validators.required, Validators.maxLength(3)]),
       nome: this.builder.control('', [Validators.required, Validators.maxLength(80)]),
@@ -41,14 +43,15 @@ export class InstituicaoDetailsComponent implements OnInit {
     }, {});
 
     // Desabilitar formulário para edição
-    this.instituicaoForm.disable();
+    this.unidadeForm.disable();
 
     // Se existir `ID` realiza busca para trazer os dados
-    if (this.instituicao.id != null) {
-      this.instituicaoService.findOne(this.instituicao.id)
-        .subscribe(instituicao => {
-          this.instituicaoForm = this.builder.group(instituicao, {})
+    if (this.unidade.id != null) {
+      this.unidadeService.findOne(this.unidade.id)
+        .subscribe(unidade => {
+          this.unidadeForm = this.builder.group(unidade, {})
         })
     }
   }
 }
+

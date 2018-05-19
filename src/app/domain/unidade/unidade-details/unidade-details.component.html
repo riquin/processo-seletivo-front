@@ -1,19 +1,19 @@
 
-<form [formGroup]="instituicaoForm" novalidate>
+<form [formGroup]="unidadeForm" novalidate>
   <div class="panel">
     <div class="panel-body">
 
       <div class="row">
 
         <div class="col-xs-6">
-          <input-container label="Código">
-            <input type="text" class="form-control" placeholder="codigo" formControlName="codigo" autocomplete="off">
+          <input-container label="Nome">
+            <input type="text" class="form-control" placeholder="nome" formControlName="nome" autocomplete="off">
           </input-container>
         </div>
 
         <div class="col-xs-6">
-          <input-container label="Nome">
-            <input type="text" class="form-control" placeholder="nome" formControlName="nome" autocomplete="off">
+          <input-container label="Código">
+            <input type="text" class="form-control" placeholder="codigo" formControlName="codigo" autocomplete="off">
           </input-container>
         </div>
 
@@ -46,7 +46,7 @@
             <input type="text" class="form-control" placeholder="pais" formControlName="pais" autocomplete="off">
         </input-container>
         </div>
-
+  
         <div class="col-xs-6">
           <input-container label="NumeroFiscal">
             <input type="number" class="form-control" placeholder="numero fiscal" formControlName="numeroFiscal" autocomplete="off">
@@ -65,8 +65,7 @@
         </input-container>
         </div>
 
-
-   <!--     <div class="col-xs-6">
+<!--        <div class="col-xs-6">
           <input-container label="Endereco">
             <input type="text" class="form-control" placeholder="endereço" formControlName="endereco" autocomplete="off">
           </input-container>
@@ -74,10 +73,10 @@
       </div>
     </div>
     <div class="panel-footer">
-      <button [routerLink]="['/instituicao/alterar', instituicao.id]" class="btn btn-primary">
+      <button [routerLink]="['/unidade/alterar', unidade.id]" class="btn btn-primary">
         Alterar
       </button>
-      <button [routerLink]="['/instituicao/']" class="btn btn-default">
+      <button [routerLink]="['/unidade/']" class="btn btn-default">
         Voltar
       </button>
     </div>
