@@ -42,10 +42,17 @@ export class MantenedoraFormComponent implements OnInit {
     /* Reactive Forms */
     this.mantenedoraForm = this.builder.group({
       id:[],
-      codigo: [null, [Validators.required, Validators.maxLength(3)]],
-      nome: [null, [Validators.required, Validators.maxLength(80)]],
-      numeroFiscal: [null, [Validators.required, Validators.maxLength(20)]],
-      endereco: [null, [Validators.required, Validators.maxLength(50)]]
+      nome: this.builder.control(null, [Validators.required, Validators.maxLength(80)]),
+      codigo: this.builder.control(null, [Validators.required, Validators.maxLength(10)]),
+      bairro: this.builder.control(null, [Validators.required, Validators.maxLength(50)]),
+      logradouro:  this.builder.control(null, [Validators.required, Validators.maxLength(80)]),
+      numero: this.builder.control(null, [Validators.required, Validators.maxLength(10)]),
+      caixaPostal: this.builder.control(null, [Validators.required, Validators.maxLength(20)]),
+      pais:this.builder.control(null, [Validators.required, Validators.maxLength(20)]),
+      numeroFiscal: this.builder.control(null, [Validators.required, Validators.maxLength(20)]),
+      provincia:  this.builder.control(null, [Validators.required, Validators.maxLength(5)]),
+      municipio:  this.builder.control(null, [Validators.required, Validators.maxLength(80)])
+      
     }, {});
 
     // Se existir `ID` realiza busca para trazer os dados

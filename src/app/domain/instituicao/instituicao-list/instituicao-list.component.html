@@ -20,6 +20,7 @@
             <!-- AQUI -->
             <tr>
               <th>#ID</th>
+              <th>IDMantenedora</th>
               <th>Nome</th>
               <th>Código</th>
               <th>Bairro</th>
@@ -39,8 +40,9 @@
             <!-- AQUI -->
             <tr *ngFor="let instituicao of instituicoes; let i = index">
               <td>{{instituicao.id}}</td>
-              <td>{{instituicao.codigo}}</td>
+              <td>{{instituicao.idMantenedora}}</td>
               <td><a [routerLink]="['/instituicao/visualizar', instituicao.id]">{{instituicao.nome}}</a></td>
+              <td>{{instituicao.codigo}}</td>
               <td>{{instituicao.bairro}}</td>
               <td>{{instituicao.logradouro}}</td>
               <td>{{instituicao.numero}}</td>

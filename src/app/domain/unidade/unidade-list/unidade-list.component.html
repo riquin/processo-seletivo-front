@@ -20,6 +20,7 @@
             <!-- AQUI -->
             <tr>
               <th>#ID</th>
+              <th>IDInstituicao</th>
               <th>Nome</th>
               <th>Código</th>
               <th>Bairro</th>
@@ -39,6 +40,7 @@
             <!-- AQUI -->
             <tr *ngFor="let unidade of unidades; let i = index">
               <td>{{unidade.id}}</td>
+              <td>{{unidade.idInstituicao}}</td>
               <td>{{unidade.codigo}}</td>
               <td><a [routerLink]="['/unidade/visualizar', unidade.id]">{{unidade.nome}}</a></td>
               <td>{{unidade.bairro}}</td>

@@ -1,7 +1,14 @@
 export class Unidade {
     id: number;
+    idInstituicao: number
     codigo: string;
     nome: string;
-    numeroFiscal: number;
-    endereco: string;
+    bairro: string;
+    logradouro: string;
+    numero: string;
+    caixaPostal: string;
+    pais: string;
+    numeroFiscal: string;
+    provincia: string;
+    municipio: string;
 }

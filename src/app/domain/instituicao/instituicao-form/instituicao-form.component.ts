@@ -39,10 +39,17 @@ export class InstituicaoFormComponent implements OnInit {
     /* Reactive Forms */
     this.instituicaoForm = this.builder.group({
       id:[],
-      codigo: [null, [Validators.required, Validators.maxLength(3)]],
+      idMantenedora: [null],
       nome: [null, [Validators.required, Validators.maxLength(80)]],
+      codigo: [null, [Validators.required, Validators.maxLength(10)]],
+      bairro:  [null, [Validators.required, Validators.maxLength(50)]],
+      logradouro:  [null, [Validators.required, Validators.maxLength(80)]],
+      numero: [null],
+      caixaPostal: [null, [Validators.required, Validators.maxLength(20)]],
+      pais: [null, [Validators.required, Validators.maxLength(20)]],
       numeroFiscal: [null, [Validators.required, Validators.maxLength(20)]],
-      endereco: [null, [Validators.required, Validators.maxLength(50)]]
+      provincia:  [null, [Validators.required, Validators.maxLength(5)]],
+      municipio:  [null, [Validators.required, Validators.maxLength(80)]]
     }, {});
 
     // Se existir `ID` realiza busca para trazer os dados

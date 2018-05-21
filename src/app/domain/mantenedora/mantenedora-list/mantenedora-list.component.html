@@ -39,8 +39,8 @@
             <!-- AQUI -->
             <tr *ngFor="let mantenedora of mantenedoras; let i = index">
               <td>{{mantenedora.id}}</td>
-              <td>{{mantenedora.codigo}}</td>
               <td><a [routerLink]="['/mantenedora/visualizar', mantenedora.id]">{{mantenedora.nome}}</a></td>
+              <td>{{mantenedora.codigo}}</td>
               <td>{{mantenedora.bairro}}</td>
               <td>{{mantenedora.logradouro}}</td>
               <td>{{mantenedora.numero}}</td>
