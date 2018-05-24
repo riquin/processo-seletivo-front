@@ -1,7 +1,7 @@
 export class Unidade {
     id: number;
-    idInstituicao: number
     codigo: string;
+    unidade: Unidade;
     nome: string;
     bairro: string;
     logradouro: string;

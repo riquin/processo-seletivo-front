@@ -15,6 +15,7 @@ import { UnidadeService } from "./unidade.service";
 import { UnidadeDetailsComponent } from "./unidade-details/unidade-details.component";
 import { UnidadeFormComponent } from "./unidade-form/unidade-form.component";
 import { UnidadeListComponent } from "./unidade-list/unidade-list.component";
+import { InstituicaoService } from '../instituicao/instituicao.service';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { UnidadeListComponent } from "./unidade-list/unidade-list.component";
   ],
   providers: [
     // services
+    InstituicaoService,
     UnidadeService
   ]
 })

@@ -8,6 +8,8 @@ import { Unidade } from "../unidade";
 import { Observable } from 'rxjs/Observable';
 import { CURRENCYMASKDIRECTIVE_VALUE_ACCESSOR } from 'ng2-currency-mask';
 import { FormControl } from '@angular/forms/src/model';
+import { Instituicao } from '../../instituicao/instituicao';
+import { InstituicaoService } from '../../instituicao/instituicao.service';
 
 @Component({
   selector: 'app-unidade-form',
@@ -18,6 +20,7 @@ export class UnidadeFormComponent implements OnInit {
 
   unidade: Unidade;
   unidadeForm: FormGroup;
+  instituicoes: Instituicao[];
 
   constructor(
     
@@ -26,9 +29,12 @@ export class UnidadeFormComponent implements OnInit {
     private builder: FormBuilder,
     private imagem: FormBuilder,
     public unidadeService: UnidadeService,
+    public instituicaoService: InstituicaoService
   ) { }
 
   ngOnInit() {
+    this.instituicaoService.findAll()
+    .subscribe(instituicoes => this.instituicoes = instituicoes);
     this.unidade = new Unidade();
 
     /* Obter o `ID` passado por parâmetro na URL */
@@ -40,17 +46,17 @@ export class UnidadeFormComponent implements OnInit {
     /* Reactive Forms */
     this.unidadeForm = this.builder.group({
       id:[],
-      idInstituicao: [null],
-      nome: [null, [Validators.required, Validators.maxLength(80)]],
-      codigo: [null, [Validators.required, Validators.maxLength(10)]],
-      bairro:  [null, [Validators.required, Validators.maxLength(50)]],
-      logradouro:  [null, [Validators.required, Validators.maxLength(80)]],
-      numero: [null],
-      caixaPostal: [null, [Validators.required, Validators.maxLength(20)]],
-      pais: [null, [Validators.required, Validators.maxLength(20)]],
-      numeroFiscal: [null, [Validators.required, Validators.maxLength(20)]],
-      provincia:  [null, [Validators.required, Validators.maxLength(5)]],
-      municipio:  [null, [Validators.required, Validators.maxLength(80)]] 
+      instituicao:[],
+      nome: this.builder.control(null, [Validators.required, Validators.maxLength(80)]),
+      codigo: this.builder.control(null, [Validators.required, Validators.maxLength(10)]),
+      bairro: this.builder.control(null, [Validators.required, Validators.maxLength(50)]),
+      logradouro:  this.builder.control(null, [Validators.required, Validators.maxLength(80)]),
+      numero: this.builder.control(null, [Validators.required, Validators.maxLength(10)]),
+      caixaPostal: this.builder.control(null, [Validators.required, Validators.maxLength(20)]),
+      pais:this.builder.control(null, [Validators.required, Validators.maxLength(20)]),
+      numeroFiscal: this.builder.control(null, [Validators.required, Validators.maxLength(20)]),
+      provincia:  this.builder.control(null, [Validators.required, Validators.maxLength(5)]),
+      municipio:  this.builder.control(null, [Validators.required, Validators.maxLength(80)])
        }, {});
     // Se existir `ID` realiza busca para trazer os dados
     if (this.unidade.id != null) {

@@ -4,19 +4,20 @@
     <div class="panel-body">
       <div class="row">
 
-          <div class="col-xs-6">
-              <input-container   label="Mantenedora">
-              <input type="text" class="form-control" placeholder="Mantenedora" formControlName="mantenedora" autocomplete="off">
-            </input-container>
-          </div>
-         
         <div class="col-xs-4">
-          <input-container   label="Nome">
+          <input-container  label="Mantenedora">
+          <select formControlName="mantenedora">
+            <option class="form-control"  *ngFor="let m of mantenedoras" [ngValue]="m"> {{ m.nome }} </option>
+        </select>
+        </input-container>
+      </div>
+
+        <div class="col-xs-4">
+          <input-container  label="Nome">
           <input type="text" class="form-control" placeholder="Nome" formControlName="nome" autocomplete="off">
         </input-container>
       </div>
    
-      
       <div class="col-xs-4">
         <input-container label="Código">
           <input type="text" class="form-control" placeholder="codigo" formControlName="codigo" autocomplete="off">
@@ -37,7 +38,7 @@
 
       <div class="col-xs-4">
         <input-container label="Numero">
-          <input type="text" class="form-control" placeholder="Numero" formControlname="numero" autocomplete="off">
+          <input type="text" class="form-control" placeholder="Numero" formControlName="numero" autocomplete="off">
       </input-container>
       </div>
 
@@ -71,8 +72,9 @@
         </input-container>
         </div>
 
-      </div>
-    </div>
+  </div>
+</div> 
+
     <div class="panel-footer">
       <button (click)="salvar(instituicaoForm.value)" [disabled]="!instituicaoForm.valid" class="btn btn-success">
         Salvar

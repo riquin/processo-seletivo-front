@@ -20,7 +20,6 @@
             <!-- AQUI -->
             <tr>
               <th>#ID</th>
-              <th>IDInstituicao</th>
               <th>Nome</th>
               <th>Código</th>
               <th>Bairro</th>
@@ -40,7 +39,6 @@
             <!-- AQUI -->
             <tr *ngFor="let unidade of unidades; let i = index">
               <td>{{unidade.id}}</td>
-              <td>{{unidade.idInstituicao}}</td>
               <td>{{unidade.codigo}}</td>
               <td><a [routerLink]="['/unidade/visualizar', unidade.id]">{{unidade.nome}}</a></td>
               <td>{{unidade.bairro}}</td>
@@ -52,7 +50,7 @@
               <td>{{unidade.provincia}}</td>
               <td>{{unidade.municipio}}</td>
               <td class="text-center">
-                <a class="btn btn-default" rel="tooltip" data-placement="top" [routerLink]="['/unidade/alterar', mantenedora.id]" title="" data-original-title="Alterar">
+                <a class="btn btn-default" rel="tooltip" data-placement="top" [routerLink]="['/unidade/alterar',unidade.id]" title="" data-original-title="Alterar">
                   <i class="fa fa-pencil"></i>
                 </a>
                 <a class="btn btn-default modal-confirm" (click)="openModal(template, unidade, i)" data-url="#">

@@ -3,16 +3,19 @@
 
     <div class="panel-body">
       <div class="row">
-        
+
+
           <div class="col-xs-6">
-              <input-container   label="Instituição">
-              <input type="text" class="form-control" placeholder="Instituição" formControlName="instituicao" autocomplete="off">
+              <input-container  label="instituicao">
+              <select formControlName="instituicao">
+             <option class="form-control" *ngFor="let i of instituicoes" [ngValue]="i"> {{i.nome}}></option>
+              </select>
             </input-container>
           </div>
 
-        <div class="col-xs-4">
-          <input-container  for="nome" label="Nome">
-          <input type="text" id="nome"class="form-control" placeholder="Nome" formControlName="nome" autocomplete="off">
+        <div class="col-xs-6">
+          <input-container  label="Nome">
+          <input type="text" class="form-control" placeholder="Nome" formControlName="nome" autocomplete="off">
         </input-container>
       </div>
    
@@ -23,7 +26,7 @@
         </input-container>
       </div>
 
-      <div class="col-xs-4">
+      <div class="col-xs-6">
         <input-container label="Bairro">
           <input type="text" class="form-control" placeholder="Bairro" formControlName="bairro" autocomplete="off">
       </input-container>
@@ -37,7 +40,7 @@
 
       <div class="col-xs-4">
         <input-container label="Numero">
-          <input type="text" class="form-control" placeholder="Numero" formControlname="numero" autocomplete="off">
+          <input type="text" class="form-control" placeholder="Numero" formControlName="numero" autocomplete="off">
       </input-container>
       </div>
 
@@ -71,8 +74,9 @@
         </input-container>
         </div>
 
-      </div>
-    </div>
+  </div>
+</div> 
+
     <div class="panel-footer">
       <button (click)="salvar(unidadeForm.value)" [disabled]="!unidadeForm.valid" class="btn btn-success">
         Salvar

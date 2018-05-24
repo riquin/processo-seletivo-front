@@ -15,6 +15,7 @@ import { InstituicaoService } from "./instituicao.service";
 import { InstituicaoDetailsComponent } from "./instituicao-details/instituicao-details.component";
 import { InstituicaoFormComponent } from "./instituicao-form/instituicao-form.component";
 import { InstituicaoListComponent } from "./instituicao-list/instituicao-list.component";
+import { MantenedoraService } from '../mantenedora/mantenedora.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { InstituicaoListComponent } from "./instituicao-list/instituicao-list.co
   ],
   providers: [
     // services
-    InstituicaoService
+    InstituicaoService,
+    MantenedoraService
   ]
 })
 export class InstituicaoModule { }

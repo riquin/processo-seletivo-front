@@ -34,17 +34,16 @@ export class InstituicaoDetailsComponent implements OnInit {
     /* Reactive Forms */
     this.instituicaoForm = this.builder.group({
       id: [],
-      idMantenedora: [null],
-      nome: [null, [Validators.required, Validators.maxLength(80)]],
-      codigo: [null, [Validators.required, Validators.maxLength(10)]],
-      bairro:  [null, [Validators.required, Validators.maxLength(50)]],
-      logradouro:  [null, [Validators.required, Validators.maxLength(80)]],
-      numero: [null],
-      caixaPostal: [null, [Validators.required, Validators.maxLength(20)]],
-      pais: [null, [Validators.required, Validators.maxLength(20)]],
-      numeroFiscal: [null, [Validators.required, Validators.maxLength(20)]],
-      provincia:  [null, [Validators.required, Validators.maxLength(5)]],
-      municipio:  [null, [Validators.required, Validators.maxLength(80)]]
+      nome: this.builder.control(null, [Validators.required, Validators.maxLength(80)]),
+      codigo: this.builder.control(null, [Validators.required, Validators.maxLength(10)]),
+      bairro: this.builder.control(null, [Validators.required, Validators.maxLength(50)]),
+      logradouro:  this.builder.control(null, [Validators.required, Validators.maxLength(80)]),
+      numero: this.builder.control(null, [Validators.required, Validators.maxLength(10)]),
+      caixaPostal: this.builder.control(null, [Validators.required, Validators.maxLength(20)]),
+      pais:this.builder.control(null, [Validators.required, Validators.maxLength(20)]),
+      numeroFiscal: this.builder.control(null, [Validators.required, Validators.maxLength(20)]),
+      provincia:  this.builder.control(null, [Validators.required, Validators.maxLength(5)]),
+      municipio:  this.builder.control(null, [Validators.required, Validators.maxLength(80)])
     }, {});
 
     // Desabilitar formulário para edição

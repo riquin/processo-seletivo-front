@@ -1,6 +1,8 @@
+import { Mantenedora } from "../mantenedora/mantenedora";
+
 export class Instituicao {
     id: number;
-    idMantenedora: number;
+    mantenedora: Mantenedora;
     codigo: string;
     nome: string;
     bairro: string;

@@ -20,7 +20,6 @@
             <!-- AQUI -->
             <tr>
               <th>#ID</th>
-              <th>IDMantenedora</th>
               <th>Nome</th>
               <th>Código</th>
               <th>Bairro</th>
@@ -30,7 +29,7 @@
               <th>País</th>
               <th>Numero Fiscal</th>
               <th>Provincia</th>
-              <th>Municipio</th>
+              <th>Municipio</th> 
               <th class="no-sort text-center">Ações</th> 
             </tr>
 
@@ -38,21 +37,21 @@
           <tbody>
 
             <!-- AQUI -->
-            <tr *ngFor="let instituicao of instituicoes; let i = index">
-              <td>{{instituicao.id}}</td>
-              <td>{{instituicao.idMantenedora}}</td>
-              <td><a [routerLink]="['/instituicao/visualizar', instituicao.id]">{{instituicao.nome}}</a></td>
-              <td>{{instituicao.codigo}}</td>
-              <td>{{instituicao.bairro}}</td>
-              <td>{{instituicao.logradouro}}</td>
-              <td>{{instituicao.numero}}</td>
-              <td>{{instituicao.caixaPostal}}</td>
-              <td>{{instituicao.pais}}</td>
-              <td>{{instituicao.numeroFiscal}}</td>
-              <td>{{instituicao.provincia}}</td>
-              <td>{{instituicao.municipio}}</td>
-              <td class="text-center">
-                <a class="btn btn-default" rel="tooltip" data-placement="top" [routerLink]="['/instituicao/alterar', mantenedora.id]" title="" data-original-title="Alterar">
+            
+            <tr *ngFor="let instituicao of instituicoes">
+                <td>{{instituicao.id}}</td>
+                <td><a [routerLink]="['/instituicao/visualizar', instituicao.id]">{{instituicao.nome}}</a></td>
+                <td>{{instituicao.codigo}}</td>
+                <td>{{instituicao.bairro}}</td>
+                <td>{{instituicao.logradouro}}</td>
+                <td>{{instituicao.numero}}</td>
+                <td>{{instituicao.caixaPostal}}</td>
+                <td>{{instituicao.pais}}</td>
+                <td>{{instituicao.numeroFiscal}}</td>
+                <td>{{instituicao.provincia}}</td>
+                <td>{{instituicao.municipio}}</td> 
+                <td class="text-center">
+                  <a class="btn btn-default" rel="tooltip" data-placement="top" [routerLink]="['/instituicao/alterar', instituicao.id]" title="" data-original-title="Alterar">
                   <i class="fa fa-pencil"></i>
                 </a>
                 <a class="btn btn-default modal-confirm" (click)="openModal(template, instituicao, i)" data-url="#">
@@ -60,14 +59,14 @@
                 </a>
               </td>
             </tr>
-
+            
           </tbody>
         </table>
-
+        
         <ng-template #template>
           <div class="modal-body text-center">
             <p>Deseja realmente excluir a instituicao {{selectedInstituicao.nome}}</p>
-            <button type="button" class="btn btn-default" (click)="deleteMantenedora()">Yes</button>
+            <button type="button" class="btn btn-default" (click)="delete()">Yes</button>
             <button type="button" class="btn btn-primary" (click)="hideModal()">No</button>
           </div>
         </ng-template>
