@@ -40,13 +40,10 @@ export class UnidadeFormComponent implements OnInit {
     /* Obter o `ID` passado por parâmetro na URL */
     this.unidade.id = this.route.snapshot.params['id'];
 
-    /* Define o titulo da página */
-    // this.layout.title = (this.unidade.id == null) ? 'Nova Unidade' : 'Alterar Unidade';
-
     /* Reactive Forms */
     this.unidadeForm = this.builder.group({
       id:[],
-      instituicao:[],
+      instituicao: this.builder.control(null, [Validators.required, Validators.maxLength(80)]),
       nome: this.builder.control(null, [Validators.required, Validators.maxLength(80)]),
       codigo: this.builder.control(null, [Validators.required, Validators.maxLength(10)]),
       bairro: this.builder.control(null, [Validators.required, Validators.maxLength(50)]),
@@ -76,5 +73,8 @@ export class UnidadeFormComponent implements OnInit {
         })
     }
   
+    compareFn (c1,c2): boolean {
+      return c1 && c2 ? c1.id === c2.id : c1===c2;
+    }
 
 }

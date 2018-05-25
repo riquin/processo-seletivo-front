@@ -5,75 +5,75 @@
       <div class="row">
 
         <div class="col-xs-4">
-          <input-container  label="Mantenedora">
-          <select formControlName="mantenedora">
-            <option class="form-control"  *ngFor="let m of mantenedoras" [ngValue]="m"> {{ m.nome }} </option>
-        </select>
-        </input-container>
-      </div>
-
-        <div class="col-xs-4">
-          <input-container  label="Nome">
-          <input type="text" class="form-control" placeholder="Nome" formControlName="nome" autocomplete="off">
-        </input-container>
-      </div>
-   
-      <div class="col-xs-4">
-        <input-container label="Código">
-          <input type="text" class="form-control" placeholder="codigo" formControlName="codigo" autocomplete="off">
-        </input-container>
-      </div>
-
-      <div class="col-xs-4">
-        <input-container label="Bairro">
-          <input type="text" class="form-control" placeholder="Bairro" formControlName="bairro" autocomplete="off">
-      </input-container>
-      </div>
-
-      <div class="col-xs-4">
-        <input-container label="Logradouro">
-          <input type="text" class="form-control" placeholder="Logradouro" formControlName="logradouro" autocomplete="off">
-      </input-container>
-      </div>
-
-      <div class="col-xs-4">
-        <input-container label="Numero">
-          <input type="text" class="form-control" placeholder="Numero" formControlName="numero" autocomplete="off">
-      </input-container>
-      </div>
-
-      <div class="col-xs-4">
-        <input-container label="CaixaPostal">
-          <input type="text" class="form-control" placeholder="Caixa postal" formControlName="caixaPostal" autocomplete="off">
-      </input-container>
-      </div>
-
-      <div class="col-xs-4">
-        <input-container label="País">
-          <input type="text" class="form-control" placeholder="País" formControlName="pais" autocomplete="off">
-      </input-container>
-      </div>
-
-      <div class="col-xs-4">
-          <input-container label="NumeroFiscal">
-            <input type="text" class="form-control" placeholder="Numero fiscal" formControlName="numeroFiscal" autocomplete="off">
+           <input-container  label="Mantenedora">
+            <select formControlName="mantenedora" [compareWith]="compareFn">
+              <option class="form-control" *ngFor="let m of mantenedoras" [ngValue]="m"> {{ m.nome }} </option>
+            </select>
           </input-container>
         </div>
 
         <div class="col-xs-4">
-          <input-container label="Provincia">
-            <input type="text" class="form-control" placeholder="Provincia" formControlName="provincia" autocomplete="off">
-        </input-container>
+           <input-container  label="Nome">
+            <input type="text" class="form-control" placeholder="Nome" formControlName="nome" autocomplete="off">
+          </input-container>
+        </div>
+   
+        <div class="col-xs-4">
+          <input-container label="Código">
+            <input type="text" class="form-control" placeholder="codigo" formControlName="codigo" autocomplete="off">
+          </input-container>
         </div>
 
         <div class="col-xs-4">
-          <input-container label="Municipio">
-            <input type="text" class="form-control" placeholder="Municipio" formControlName="municipio" autocomplete="off">
-        </input-container>
+          <input-container label="Bairro">
+            <input type="text" class="form-control" placeholder="Bairro" formControlName="bairro" autocomplete="off">
+          </input-container>
         </div>
 
-  </div>
-</div> 
+        <div class="col-xs-4">
+          <input-container label="Logradouro">
+            <input type="text" class="form-control" placeholder="Logradouro" formControlName="logradouro" autocomplete="off">
+         </input-container>
+        </div>
+
+        <div class="col-xs-4">
+          <input-container label="Numero">
+            <input type="text" class="form-control" placeholder="Numero" formControlName="numero" autocomplete="off">
+          </input-container>
+        </div>
+
+        <div class="col-xs-4">
+          <input-container label="CaixaPostal">
+            <input type="text" class="form-control" placeholder="Caixa postal" formControlName="caixaPostal" autocomplete="off">
+          </input-container>
+        </div>
+
+        <div class="col-xs-4">
+          <input-container label="País">
+            <input type="text" class="form-control" placeholder="País" formControlName="pais" autocomplete="off">
+          </input-container>
+        </div>
+
+        <div class="col-xs-4">
+            <input-container label="NumeroFiscal">
+              <input type="text" class="form-control" placeholder="Numero fiscal" formControlName="numeroFiscal" autocomplete="off">
+            </input-container>
+          </div>
+
+          <div class="col-xs-4">
+            <input-container label="Provincia">
+              <input type="text" class="form-control" placeholder="Provincia" formControlName="provincia" autocomplete="off">
+            </input-container>
+          </div>
+
+          <div class="col-xs-4">
+            <input-container label="Municipio">
+              <input type="text" class="form-control" placeholder="Municipio" formControlName="municipio" autocomplete="off">
+            </input-container>
+          </div>
+
+    </div>
+  </div> 
 
     <div class="panel-footer">
       <button (click)="salvar(instituicaoForm.value)" [disabled]="!instituicaoForm.valid" class="btn btn-success">

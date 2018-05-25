@@ -11,6 +11,7 @@ import { FormControl } from '@angular/forms/src/model';
 import { MantenedoraService } from '../../mantenedora/mantenedora.service';
 import { Mantenedora } from '../../mantenedora/mantenedora';
 
+
 @Component({
   selector: 'app-instituicao-form',
   templateUrl: './instituicao-form.component.html',
@@ -42,13 +43,10 @@ export class InstituicaoFormComponent implements OnInit {
     /* Obter o `ID` passado por parâmetro na URL */
     this.instituicao.id = this.route.snapshot.params['id'];
 
-    /* Define o titulo da página */
-    // this.layout.title = (this.instituicao.id == null) ? 'Nova Instituicao' : 'Alterar Instituicao';
-
     /* Reactive Forms */
     this.instituicaoForm = this.builder.group({
       id:[],
-      mantenedora: [],
+      mantenedora: this.builder.control(null, [Validators.required, Validators.maxLength(80)]),
       nome: this.builder.control(null, [Validators.required, Validators.maxLength(80)]),
       codigo: this.builder.control(null, [Validators.required, Validators.maxLength(10)]),
       bairro: this.builder.control(null, [Validators.required, Validators.maxLength(50)]),
@@ -77,6 +75,10 @@ export class InstituicaoFormComponent implements OnInit {
         /* Redireciona para lista */
         this.router.navigate(['/instituicao']);
       })
+  }
+
+  compareFn (c1,c2): boolean {
+    return c1 && c2 ? c1.id === c2.id : c1===c2;
   }
 
 }

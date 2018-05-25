@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { InstituicaoService } from "../instituicao.service";
 import { Instituicao } from "../instituicao";
+import { MantenedoraService } from '../../mantenedora/mantenedora.service';
+import { Mantenedora } from '../../mantenedora/mantenedora';
 
 @Component({
   selector: 'app-instituicao-details',
@@ -14,26 +16,29 @@ export class InstituicaoDetailsComponent implements OnInit {
 
   instituicao: Instituicao;
   instituicaoForm: FormGroup;
+  mantenedoras: Mantenedora[];
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private builder: FormBuilder,
-    public instituicaoService: InstituicaoService
+    public instituicaoService: InstituicaoService,
+    public mantenedoraService: MantenedoraService
   ) { }
 
   ngOnInit() {
+    this.mantenedoraService.findAll()
+    .subscribe( mantenedoras => this.mantenedoras = mantenedoras);
+
     this.instituicao = new Instituicao();
 
     /* Obter o `ID` passado por parâmetro na URL */
     this.instituicao.id = this.route.snapshot.params['id'];
 
-    /* Define o titulo da página */
-    // this.layout.title = 'Visualizar Instituicao';
-
     /* Reactive Forms */
     this.instituicaoForm = this.builder.group({
       id: [],
+      mantenedora: this.builder.control(null, [Validators.required, Validators.maxLength(80)]),
       nome: this.builder.control(null, [Validators.required, Validators.maxLength(80)]),
       codigo: this.builder.control(null, [Validators.required, Validators.maxLength(10)]),
       bairro: this.builder.control(null, [Validators.required, Validators.maxLength(50)]),
@@ -57,4 +62,9 @@ export class InstituicaoDetailsComponent implements OnInit {
         })
     }
   }
+
+  compareFn (c1,c2): boolean {
+    return c1 && c2 ? c1.id === c2.id : c1===c2;
+  }
+  
 }
